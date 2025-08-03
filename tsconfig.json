@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": ["./*.ts", "src"],
+  "compilerOptions": {
+    // Environment
+    "lib": ["esnext"],
+    "module": "esnext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "#src/*": ["src/*.ts"]
+    },
+
+    // Type Checking
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": false,
+
+    // Output
+    "target": "esnext",
+    "noEmit": true
+    // "rootDir": "src",
+    // "outDir": "dist",
+    // "declaration": true,
+    // "declarationMap": true,
+    // "sourceMap": true,
+    // "esModuleInterop": true
+  }
+}
