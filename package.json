@@ -1,7 +1,7 @@
 {
   "name": "typescript-boilerplate",
   "version": "0.0.0",
-  "description": "A TypeScript boilerplate project with testing, documentation, and build scripts.",
+  "description": "A boilerplate TypeScript project with testing, documentation, and build scripts.",
   "license": "Apache-2.0",
   "author": "ryan goree (https://github.com/ryangoree)",
   "repository": {
@@ -33,20 +33,19 @@
     }
   },
   "scripts": {
-    "build": "tsup",
-    "watch": "tsup --watch",
-    "build:docs": "typedoc",
     "test": "vitest run --reporter=verbose",
     "test:watch": "vitest --reporter=verbose",
     "test:ci": "vitest run",
-    "coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
-    "format": "biome format --write .",
-    "lint": "biome lint --diagnostic-level error .",
-    "lint:fix": "bun lint --fix",
-    "lint:fix:unsafe": "bun lint:fix --unsafe",
-    "lint:package": "publint",
-    "release": "bun run build && changeset publish"
+    "check": "npm run typecheck && biome check --diagnostic-level error . ",
+    "check:package": "publint",
+    "fix": "biome check --diagnostic-level error . --write",
+    "fix:unsafe": "npm run fix --unsafe",
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "build:docs": "typedoc",
+    "release": "npm run run build && changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.4",
