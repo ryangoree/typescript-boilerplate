@@ -15,8 +15,5 @@
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
   "typescript.preferences.autoImportFileExcludePatterns": ["src/index.*", "src/exports*"]
 }

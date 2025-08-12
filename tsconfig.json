@@ -26,8 +26,8 @@
     "noPropertyAccessFromIndexSignature": false,
 
     // Output
-    "target": "esnext",
-    "noEmit": true
+    "noEmit": true,
+    "target": "esnext"
     // "rootDir": "src",
     // "outDir": "dist",
     // "declaration": true,
