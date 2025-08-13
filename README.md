@@ -1,6 +1,6 @@
 # TypeScript Boilerplate
 
-Minimal, publish-ready TypeScript library setup with tests, docs, builds, and CI/CD.
+Publish-ready TypeScript library setup with tests, docs, builds, and CI/CD.
 
 ## Tech stack
 
@@ -21,8 +21,8 @@ Minimal, publish-ready TypeScript library setup with tests, docs, builds, and CI
 .github
 └── workflows             # GitHub Actions workflows
 .vscode
-└── settings.json         # Shared VS Code settings
-src                       
+└── settings.json         # Project specific VS Code settings
+src
 ├── exports               # Public API (configured in `tsup.config.ts` & `package.json`)
 └── ...                   # Source files
 .gitignore
@@ -30,7 +30,7 @@ src
 biome.json                # Formatting & linting config
 bun.lock                  # Dependency lockfile
 LICENSE
-package.json              # Package manifest
+package.json              # Project manifest
 README.md
 tsconfig.json             # TypeScript config
 tsup.config.ts            # Build config
@@ -71,27 +71,107 @@ bun run build:docs
 bun run check:package
 ```
 
-## Docs
+## Configuring exports
 
-- Generated with TypeDoc to `./docs`
-- CI deploys to GitHub Pages on pushes to `main`
+The public API is defined by the files in [`src/exports`](./src/exports), the build `entry` list in
+[`tsup.config.ts`](./tsup.config.ts), and the `"exports"` map in [`package.json`](./package.json).
 
-## Releases (Changesets + CI)
+### How export paths affect library usage
 
-1. Create a changeset locally: `bunx changeset`
-2. Commit and push. The Release workflow opens/updates a version PR.
-3. Merge the version PR into `main` to publish to npm and create tags.
+Each file you list as an entry point becomes a subpath import for consumers:
 
-Requirements: `NPM_TOKEN` repo secret (used by the Release workflow).
+```
+import { something } from "your-package";          // from src/exports/index.ts (".")
+import { helper } from "your-package/testing";     // from src/exports/testing.ts ("./testing")
+```
 
-## CI/CD
+Adding `src/exports/foo.ts` lets consumers `import { x } from "your-package/foo"` once you update
+the build + manifest. Only the paths declared in `package.json#exports` are accessible, everything
+else remains internal.
 
-- [`.github/workflows/pull-request.yml`](./.github/workflows/pull-request.yml) — runs check, build,
-  and tests on PRs
-- [`.github/workflows/docs-pages.yml`](./.github/workflows/docs-pages.yml) — builds TypeDoc and
-  deploys to GitHub Pages
-- [`.github/workflows/release.yml`](./.github/workflows/release.yml) — manages version PRs and
-  publishes to npm
+### Steps to add a new export
+
+1. Create the file in `src/exports`, e.g. `src/exports/foo.ts`.
+2. Add it to the `entry` array in `tsup.config.ts`:
+   ```ts
+   entry: [
+     "src/exports/index.ts",
+     "src/exports/testing.ts",
+     "src/exports/foo.ts", // new
+   ],
+   ```
+3. Add a subpath in `package.json#exports` matching the filename (no extension):
+   ```jsonc
+   "exports": {
+     // Existing exports...
+     "./foo": {
+       "require": {
+         "types": "./dist/foo.d.cts",
+         "default": "./dist/foo.cjs"
+       },
+       "import": {
+         "types": "./dist/foo.d.ts",
+         "default": "./dist/foo.js"
+       }
+     },
+     "./package.json": "./package.json"
+   }
+   ```
+4. Update the `package.json#typesVersions` mapping so TypeScript / older tooling can resolve
+   declaration files for the new subpath:
+   ```jsonc
+   "typesVersions": {
+     "*": {
+       // Existing mappings...
+       "foo": ["./dist/foo.d.ts"] // new
+     }
+   }
+   ```
+5. Run `bun run build` and `bun run check:package` to verify.
+
+### Removing an export
+
+Reverse the steps: delete the subpath from `package.json#exports` and `package.json#typesVersions`,
+remove the file from the `entry` array in `tsup.config.ts`, delete the file under `src/exports`, and
+clean the dist (`bun run build`).
+
+### Notes
+
+- Keep filenames simple; subpath = filename (no `.ts`).
+- The root export (`"."`) is conventionally `src/exports/index.ts`.
+- Changing export structure is a breaking change. Bump the major version if removing or renaming
+  public paths in a published package.
+
+## Automation
+
+### Repo setup
+
+1. Actions PR permissions: **Settings** → **Actions** → **General** → **Workflow permissions** →
+   enable **Allow GitHub Actions to create and approve pull requests**.
+2. Docs deployment: **Settings** → **Pages** → **Build and deployment** → **Source** = **GitHub
+   Actions**.
+3. Publish token: **Settings** → **Secrets and variables** → **Actions** → **New repository
+   secret**:
+   - **Name**: `NPM_TOKEN`
+   - **Secret**: [npm automation/access
+     token](https://docs.npmjs.com/creating-and-viewing-access-tokens) with publish rights.
+
+### Workflows
+
+- PR checks: [`.github/workflows/pull-request.yml`](./.github/workflows/pull-request.yml)
+- Docs deploy: [`.github/workflows/docs-pages.yml`](./.github/workflows/docs-pages.yml)
+- Release & publish: [`.github/workflows/release.yml`](./.github/workflows/release.yml)
+
+### Releases
+
+1. Run `bunx changeset`.
+2. Commit & push (version PR will open or update).
+3. Merge version PR to publish to npm + create tags (requires `NPM_TOKEN`).
+
+### Docs
+
+- Generated with TypeDoc to `./docs`.
+- Published to GitHub Pages via docs-pages workflow.
 
 ## License
 
