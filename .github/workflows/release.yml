@@ -11,22 +11,22 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v5
 
-      - name: Install bun
+      - name: install bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Install dependencies
+      - name: install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: update pull request or publish
         id: changesets
         uses: changesets/action@v1
         with:
           commit: 'chore: version packages'
           title: 'chore: version packages'
-          publish: bun release
+          publish: bun run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
