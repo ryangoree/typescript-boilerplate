@@ -25,7 +25,7 @@ builds, and CI/CD.
 .vscode
 └── settings.json         # Shared VS Code settings
 src                       
-├── exports               # Public API (configured in `package.json` & `tsup.config.ts`)
+├── exports               # Public API (configured in `tsup.config.ts` & `package.json`)
 └── ...                   # Source files
 .gitignore
 .prettierrc.cjs           # Formatting config for languages not supported by Biome
