@@ -3,6 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: ["src/exports/index.ts", "src/exports/testing.ts"],
   format: ["esm", "cjs"],
+  target: "esnext",
   sourcemap: true,
   dts: true,
   clean: true,
