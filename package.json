@@ -1,7 +1,7 @@
 {
   "name": "typescript-boilerplate",
   "version": "0.0.0",
-  "description": "A boilerplate TypeScript project with testing, documentation, and build scripts.",
+  "description": "TypeScript library boilerplate with tests, docs, builds, and CI/CD.",
   "license": "Apache-2.0",
   "author": "ryan goree (https://github.com/ryangoree)",
   "repository": {
