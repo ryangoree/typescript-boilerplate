@@ -1,5 +1,4 @@
 {
-  "prettier.configPath": ".prettierrc.cjs",
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -15,5 +14,7 @@
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "typescript.preferences.autoImportFileExcludePatterns": ["src/index.*", "src/exports*"]
+  "prettier.configPath": ".prettierrc.cjs",
+  "typescript.preferences.autoImportFileExcludePatterns": ["src/index.*", "src/exports*"],
+  "rewrap.wrappingColumn": 100
 }

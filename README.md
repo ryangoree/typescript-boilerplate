@@ -1,7 +1,6 @@
 # TypeScript Boilerplate
 
-Minimal, publish-ready TypeScript library setup with tests, docs,
-builds, and CI/CD.
+Minimal, publish-ready TypeScript library setup with tests, docs, builds, and CI/CD.
 
 ## Tech stack
 
@@ -12,8 +11,7 @@ builds, and CI/CD.
 - [publint](https://publint.dev) — package readiness checks
 - [tsup](https://tsup.egoist.dev) — ESM + CJS bundles with types and sourcemaps
 - [TypeDoc](https://typedoc.org) — docs generation to `docs/`
-- [Changesets](https://github.com/changesets/changesets) — versioning and
-  release management
+- [Changesets](https://github.com/changesets/changesets) — versioning and release management
 
 ## Project layout
 
@@ -88,15 +86,15 @@ Requirements: `NPM_TOKEN` repo secret (used by the Release workflow).
 
 ## CI/CD
 
-- [`.github/workflows/pull-request.yml`](./.github/workflows/pull-request.yml) —
-  runs check, build, and tests on PRs
-- [`.github/workflows/docs-pages.yml`](./.github/workflows/docs-pages.yml) —
-  builds TypeDoc and deploys to GitHub Pages
-- [`.github/workflows/release.yml`](./.github/workflows/release.yml) — manages
-  version PRs and publishes to npm
+- [`.github/workflows/pull-request.yml`](./.github/workflows/pull-request.yml) — runs check, build,
+  and tests on PRs
+- [`.github/workflows/docs-pages.yml`](./.github/workflows/docs-pages.yml) — builds TypeDoc and
+  deploys to GitHub Pages
+- [`.github/workflows/release.yml`](./.github/workflows/release.yml) — manages version PRs and
+  publishes to npm
 
 ## License
 
-This boilerplate uses the Apache-2.0 license by default, but the boilerplate
-itself is provided without restrictions. You can change the license in
-[`LICENSE`](./LICENSE) and [`package.json`](./package.json) as needed.
+This boilerplate uses the Apache-2.0 license by default, but the boilerplate itself is provided
+without restrictions. You can change the license in [`LICENSE`](./LICENSE) and
+[`package.json`](./package.json) as needed.
