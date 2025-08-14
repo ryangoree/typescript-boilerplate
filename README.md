@@ -80,7 +80,7 @@ The public API is defined by the files in [`src/exports`](./src/exports), the bu
 
 Each file you list as an entry point becomes a subpath import for consumers:
 
-```
+```ts
 import { something } from "your-package";          // from src/exports/index.ts (".")
 import { helper } from "your-package/testing";     // from src/exports/testing.ts ("./testing")
 ```
