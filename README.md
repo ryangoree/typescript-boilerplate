@@ -9,7 +9,7 @@ Publish-ready TypeScript library setup with tests, docs, builds, and CI/CD.
 - [Vitest](https://vitest.dev) — testing and coverage
 - [Biome](https://biomejs.dev) — formatting and linting
 - [publint](https://publint.dev) — package readiness checks
-- [tsup](https://tsup.egoist.dev) — ESM + CJS bundles with types and sourcemaps
+- [tsdown](https://tsdown.dev) — ESM + CJS bundles with types and sourcemaps
 - [TypeDoc](https://typedoc.org) — docs generation to `docs/`
 - [Changesets](https://github.com/changesets/changesets) — versioning and release management
 
@@ -127,7 +127,7 @@ else remains internal.
      }
    }
    ```
-5. Run `bun run build` and `bun run check:package` to verify.
+5. Run `bun run build` to verify.
 
 ### Removing an export
 

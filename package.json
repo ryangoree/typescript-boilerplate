@@ -43,18 +43,18 @@
     "check:package": "publint",
     "fix": "biome check --diagnostic-level error . --write",
     "fix:unsafe": "npm run fix --unsafe",
-    "build": "tsup",
-    "build:watch": "tsup --watch",
+    "build": "tsdown",
+    "build:watch": "tsdown --watch",
     "build:docs": "typedoc",
     "release": "npm run build && changeset publish"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.4",
+    "@biomejs/biome": "^2.2.0",
     "@changesets/cli": "^2.29.5",
-    "@types/node": "^24.2.1",
+    "@types/node": "^24.3.0",
     "@vitest/coverage-v8": "^3.2.4",
     "publint": "^0.3.12",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.14.1",
     "typedoc": "^0.28.10",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
@@ -62,7 +62,8 @@
   "imports": {
     "#/*": "./dist/*.js"
   },
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {

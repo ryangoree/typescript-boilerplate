@@ -1,14 +1,11 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsdown";
 
 export default defineConfig({
   entry: ["src/exports/index.ts", "src/exports/testing.ts"],
   format: ["esm", "cjs"],
   target: "esnext",
-  sourcemap: true,
-  dts: true,
-  clean: true,
   minify: true,
   shims: true,
-  cjsInterop: true,
-  keepNames: true,
+  sourcemap: true,
+  publint: true,
 });
