@@ -23,7 +23,7 @@ Publish-ready TypeScript library setup with tests, docs, builds, and CI/CD.
 .vscode
 └── settings.json         # Project specific VS Code settings
 src
-├── exports               # Public API (configured in `tsup.config.ts` & `package.json`)
+├── exports               # Public API (configured in `tsdown.config.ts` & `package.json`)
 └── ...                   # Source files
 .gitignore
 .prettierrc.cjs           # Formatting config for languages not supported by Biome
@@ -33,7 +33,7 @@ LICENSE
 package.json              # Project manifest
 README.md
 tsconfig.json             # TypeScript config
-tsup.config.ts            # Build config
+tsdown.config.ts            # Build config
 typedoc.json              # Docs generation config
 vitest.config.ts          # Testing config
 ```
@@ -74,15 +74,16 @@ bun run check:package
 ## Configuring exports
 
 The public API is defined by the files in [`src/exports`](./src/exports), the build `entry` list in
-[`tsup.config.ts`](./tsup.config.ts), and the `"exports"` map in [`package.json`](./package.json).
+[`tsdown.config.ts`](./tsdown.config.ts), and the `"exports"` map in
+[`package.json`](./package.json).
 
 ### How export paths affect library usage
 
 Each file you list as an entry point becomes a subpath import for consumers:
 
 ```ts
-import { something } from "your-package";          // from src/exports/index.ts (".")
-import { helper } from "your-package/testing";     // from src/exports/testing.ts ("./testing")
+import { something } from "your-package"; // from src/exports/index.ts (".")
+import { helper } from "your-package/testing"; // from src/exports/testing.ts ("./testing")
 ```
 
 Adding `src/exports/foo.ts` lets consumers `import { x } from "your-package/foo"` once you update
@@ -92,7 +93,7 @@ else remains internal.
 ### Steps to add a new export
 
 1. Create the file in `src/exports`, e.g. `src/exports/foo.ts`.
-2. Add it to the `entry` array in `tsup.config.ts`:
+2. Add it to the `entry` array in `tsdown.config.ts`:
    ```ts
    entry: [
      "src/exports/index.ts",
@@ -132,8 +133,8 @@ else remains internal.
 ### Removing an export
 
 Reverse the steps: delete the subpath from `package.json#exports` and `package.json#typesVersions`,
-remove the file from the `entry` array in `tsup.config.ts`, delete the file under `src/exports`, and
-clean the dist (`bun run build`).
+remove the file from the `entry` array in `tsdown.config.ts`, delete the file under `src/exports`,
+and clean the dist (`bun run build`).
 
 ### Notes
 
