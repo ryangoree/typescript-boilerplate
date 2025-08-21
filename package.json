@@ -60,7 +60,7 @@
     "vitest": "^3.2.4"
   },
   "imports": {
-    "#/*": "./dist/*.js"
+    "#src/*": "./dist/*.js"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.js",

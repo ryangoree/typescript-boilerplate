@@ -13,7 +13,7 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
-      "#/*": ["src/*.ts"]
+      "#src/*": ["src/*.ts"]
     },
 
     // Type Checking

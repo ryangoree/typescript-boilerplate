@@ -1,1 +1,1 @@
-export { createStub } from "#/utils/testing/createStub";
+export { createStub } from "#src/utils/testing/createStub";
