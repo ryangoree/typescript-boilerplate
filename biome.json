@@ -28,10 +28,7 @@
         "noUnusedImports": "error"
       },
       "style": {
-        "noNonNullAssertion": {
-          "fix": "none",
-          "level": "info"
-        },
+        "noNonNullAssertion": "info",
         "noParameterAssign": "off"
       },
       "suspicious": {
