@@ -9,14 +9,6 @@
   "assist": {
     "enabled": true
   },
-  "formatter": {
-    "enabled": true,
-    "formatWithErrors": false,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineEnding": "lf",
-    "lineWidth": 100
-  },
   "linter": {
     "enabled": true,
     "rules": {
@@ -34,10 +26,17 @@
       "suspicious": {
         "noExplicitAny": "info",
         "noDoubleEquals": "warn",
-        "noAssignInExpressions": "off",
         "noEmptyInterface": "off"
       }
     }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 100
   },
   "javascript": {
     "formatter": {
