@@ -92,8 +92,8 @@ else remains internal.
 
 ### Steps to add a new export
 
-1. Create the file in `src/exports`, e.g. `src/exports/foo.ts`.
-2. Add it to the `entry` array in `tsdown.config.ts`:
+1. Create the file in [`src/exports`](./src/exports), e.g. `src/exports/foo.ts`.
+2. Add it to the `entry` array in [`tsdown.config.ts`](./tsdown.config.ts):
    ```ts
    entry: [
      "src/exports/index.ts",
@@ -133,13 +133,13 @@ else remains internal.
 ### Removing an export
 
 Reverse the steps: delete the subpath from `package.json#exports` and `package.json#typesVersions`,
-remove the file from the `entry` array in `tsdown.config.ts`, delete the file under `src/exports`,
-and clean the dist (`bun run build`).
+remove the file from the `entry` array in [`tsdown.config.ts`](./tsdown.config.ts), delete the file
+under [`src/exports`](./src/exports), and clean the dist (`bun run build`).
 
 ### Notes
 
 - Keep filenames simple; subpath = filename (no `.ts`).
-- The root export (`"."`) is conventionally `src/exports/index.ts`.
+- The root export (`"."`) is conventionally [`src/exports/index.ts`](src/exports/index.ts).
 - Changing export structure is a breaking change. Bump the major version if removing or renaming
   public paths in a published package.
 
