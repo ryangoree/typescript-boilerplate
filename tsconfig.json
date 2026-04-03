@@ -5,16 +5,14 @@
     // Environment (affects what's available in source code)
     "lib": ["esnext"],
     "module": "esnext",
-    "target": "esnext",
+    "types": ["node"],
     "moduleDetection": "force",
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
     "noUncheckedSideEffectImports": true,
-    "baseUrl": ".",
     "paths": {
-      "#src/*": ["src/*.ts"]
+      "#/*": ["./src/*.ts"]
     },
 
     // Type Checking (affects type checking and inference)
@@ -27,6 +25,7 @@
     "noPropertyAccessFromIndexSignature": false,
 
     // Output (handled by tsdown)
-    "noEmit": true
+    "noEmit": true,
+    "target": "esnext"
   }
 }

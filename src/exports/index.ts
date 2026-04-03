@@ -1,1 +1,1 @@
-export { helloWorld } from "#src/hello";
+export { helloWorld } from "#/hello";

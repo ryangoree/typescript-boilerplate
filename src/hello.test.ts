@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { helloWorld } from "#src/hello";
+import { helloWorld } from "#/hello";
 
 describe("helloWorld", () => {
   it("returns 'Hello, World!'", () => {
