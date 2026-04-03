@@ -46,7 +46,7 @@
     "build": "tsdown",
     "build:watch": "tsdown --watch",
     "build:docs": "typedoc",
-    "dev:docs": "serve ./docs",
+    "preview:docs": "serve ./docs",
     "release": "npm run build && changeset publish"
   },
   "devDependencies": {

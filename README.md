@@ -66,7 +66,7 @@ bun run build:watch
 
 # Generate docs (outputs to ./docs)
 bun run build:docs
-bun run dev:docs
+bun run preview:docs
 
 # Validate package exports/metadata
 bun run check:package
