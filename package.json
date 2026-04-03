@@ -46,6 +46,7 @@
     "build": "tsdown",
     "build:watch": "tsdown --watch",
     "build:docs": "typedoc",
+    "dev:docs": "serve ./docs",
     "release": "npm run build && changeset publish"
   },
   "devDependencies": {
@@ -54,6 +55,7 @@
     "@types/node": "^25.5.0",
     "@vitest/coverage-v8": "^4.1.2",
     "publint": "^0.3.18",
+    "serve": "^14.2.6",
     "tsdown": "^0.21.7",
     "typedoc": "^0.28.18",
     "typescript": "^6.0.2",

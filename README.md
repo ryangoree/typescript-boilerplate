@@ -49,7 +49,7 @@ bun install
 Common scripts:
 
 ```sh
-# Typecheck + Biome
+# Typecheck + Biome (formatting/linting)
 bun run check
 
 # Auto-fix formatting/lint issues
@@ -66,6 +66,7 @@ bun run build:watch
 
 # Generate docs (outputs to ./docs)
 bun run build:docs
+bun run dev:docs
 
 # Validate package exports/metadata
 bun run check:package
