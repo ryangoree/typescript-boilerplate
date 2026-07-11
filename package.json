@@ -50,16 +50,16 @@
     "release": "npm run build && changeset publish"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.10",
-    "@changesets/cli": "^2.30.0",
-    "@types/node": "^25.5.0",
-    "@vitest/coverage-v8": "^4.1.2",
-    "publint": "^0.3.18",
+    "@biomejs/biome": "^2.5.3",
+    "@changesets/cli": "^2.31.0",
+    "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "publint": "^0.3.21",
     "serve": "^14.2.6",
-    "tsdown": "^0.21.7",
-    "typedoc": "^0.28.18",
-    "typescript": "^6.0.2",
-    "vitest": "^4.1.2"
+    "tsdown": "^0.22.5",
+    "typedoc": "^0.28.20",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   },
   "imports": {
     "#/*": "./dist/*.js"
